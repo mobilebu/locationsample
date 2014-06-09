@@ -610,3 +610,450 @@ NO_USER: { cookie:
      httpOnly: true },
   passport: {} }
 [90mGET / [36m304 [90m108ms[0m
+[90mGET /login_google [36m302 [90m3ms - 862b[0m
+TOKEN
+AT: ya29.LQDQcKlJwQ2ExBwAAAA_CI7U7UWd4JjDQvj9kEc3p_1gIsBGOb1ZIiy31akoDA
+RT: undefined
+{ access_token: 'ya29.LQDQcKlJwQ2ExBwAAAA_CI7U7UWd4JjDQvj9kEc3p_1gIsBGOb1ZIiy31akoDA',
+  token_type: 'Bearer',
+  expires_in: 3599,
+  id_token: 'eyJhbGciOiJSUzI1NiIsImtpZCI6ImFlMTE2NTIxMWY4N2QyM2RjMjgyZGNiMmJmNDY4Mzg1Zjc2YzBmZjkifQ.eyJpc3MiOiJhY2NvdW50cy5nb29nbGUuY29tIiwic3ViIjoiMTA3MjQ0Njg1NDIzMDMzMzY3NjM0IiwiYXpwIjoiMTgyNjk0MDI0MTYxLWMyYjlsb2VqaTFxZzNkMDI1NW9ibGVlM2RtaGo2cWVuLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwiZW1haWwiOiJraXJpbWFuamlyb3VAZ21haWwuY29tIiwiYXRfaGFzaCI6ImItZWUtRnZNNzVWTkUtUVJKV1pnQ1EiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiYXVkIjoiMTgyNjk0MDI0MTYxLWMyYjlsb2VqaTFxZzNkMDI1NW9ibGVlM2RtaGo2cWVuLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwiaWF0IjoxNDAyMzA0MTkxLCJleHAiOjE0MDIzMDgwOTF9.BYSc1R5USnCaZEFCln5GRzWyB6iRU_RINbsu0eVYtgcrTpN__Nj-wIFx2sMCMLHmqWm3uoAJgoPLeyD2yjBaXjiAfzb0EkS1tn6jT12QQDBlcGalGCkuMYgYLWKVObpJp9aOdbtoHY5YEtMyL4rvsMleAevLYV0XIE3jh1YFSaA' }
+----
+{ iss: 'accounts.google.com',
+  sub: '107244685423033367634',
+  azp: '182694024161-c2b9loeji1qg3d0255oblee3dmhj6qen.apps.googleusercontent.com',
+  email: 'kirimanjirou@gmail.com',
+  at_hash: 'b-ee-FvM75VNE-QRJWZgCQ',
+  email_verified: true,
+  aud: '182694024161-c2b9loeji1qg3d0255oblee3dmhj6qen.apps.googleusercontent.com',
+  iat: 1402304191,
+  exp: 1402308091 }
+LOAD: true
+fetch profile: https://www.googleapis.com/oauth2/v1/userinfo?schema=openid
+PROFILE
+{
+ "id": "107244685423033367634",
+ "email": "kirimanjirou@gmail.com",
+ "verified_email": true,
+ "name": "Kazunori SEKIMIZU",
+ "given_name": "Kazunori",
+ "family_name": "SEKIMIZU",
+ "link": "https://plus.google.com/107244685423033367634",
+ "picture": "https://lh5.googleusercontent.com/-9yRQ_EajRFI/AAAAAAAAAAI/AAAAAAAAARs/2UnmrkrWzhU/photo.jpg",
+ "gender": "male",
+ "locale": "ja"
+}
+
+-------
+GOOGLE_CALL_BACK: { id: '107244685423033367634',
+  displayName: 'Kazunori SEKIMIZU',
+  name: 
+   { familyName: 'SEKIMIZU',
+     givenName: 'Kazunori',
+     middleName: undefined },
+  _raw: '{\n "id": "107244685423033367634",\n "email": "kirimanjirou@gmail.com",\n "verified_email": true,\n "name": "Kazunori SEKIMIZU",\n "given_name": "Kazunori",\n "family_name": "SEKIMIZU",\n "link": "https://plus.google.com/107244685423033367634",\n "picture": "https://lh5.googleusercontent.com/-9yRQ_EajRFI/AAAAAAAAAAI/AAAAAAAAARs/2UnmrkrWzhU/photo.jpg",\n "gender": "male",\n "locale": "ja"\n}\n',
+  _json: 
+   { id: '107244685423033367634',
+     email: 'kirimanjirou@gmail.com',
+     verified_email: true,
+     name: 'Kazunori SEKIMIZU',
+     given_name: 'Kazunori',
+     family_name: 'SEKIMIZU',
+     link: 'https://plus.google.com/107244685423033367634',
+     picture: 'https://lh5.googleusercontent.com/-9yRQ_EajRFI/AAAAAAAAAAI/AAAAAAAAARs/2UnmrkrWzhU/photo.jpg',
+     gender: 'male',
+     locale: 'ja' } }
+PROFILEID: 107244685423033367634
+PROFILENAME: Kazunori SEKIMIZU
+PROFILEEMAIL: kirimanjirou@gmail.com
+[90mGET /auth/google/callback?code=4/kWZ-k_jR6OAWnNK0V9Z7v5Xkxe44.0uiy4EwjCl0egrKXntQAax02hLz_jAI&authuser=0&num_sessions=1&session_state=5e49d5144994fa0054c8a6671c31674eda6d2bf1..8eb7&prompt=none [36m302 [90m694ms - 58b[0m
+(rows)
+GET_END
+INSERT_FLG_OFF
+DB_END
+LOGIN: { cookie: 
+   { path: '/',
+     _expires: null,
+     originalMaxAge: null,
+     httpOnly: true },
+  passport: 
+   { user: 
+      { id: '107244685423033367634',
+        displayName: 'Kazunori SEKIMIZU',
+        name: [Object],
+        _raw: '{\n "id": "107244685423033367634",\n "email": "kirimanjirou@gmail.com",\n "verified_email": true,\n "name": "Kazunori SEKIMIZU",\n "given_name": "Kazunori",\n "family_name": "SEKIMIZU",\n "link": "https://plus.google.com/107244685423033367634",\n "picture": "https://lh5.googleusercontent.com/-9yRQ_EajRFI/AAAAAAAAAAI/AAAAAAAAARs/2UnmrkrWzhU/photo.jpg",\n "gender": "male",\n "locale": "ja"\n}\n',
+        _json: [Object] } } }
+[90mGET / [32m200 [90m3ms - 2.05kb[0m
+LIST: { user: 
+   { id: '107244685423033367634',
+     displayName: 'Kazunori SEKIMIZU',
+     name: { familyName: 'SEKIMIZU', givenName: 'Kazunori' },
+     _raw: '{\n "id": "107244685423033367634",\n "email": "kirimanjirou@gmail.com",\n "verified_email": true,\n "name": "Kazunori SEKIMIZU",\n "given_name": "Kazunori",\n "family_name": "SEKIMIZU",\n "link": "https://plus.google.com/107244685423033367634",\n "picture": "https://lh5.googleusercontent.com/-9yRQ_EajRFI/AAAAAAAAAAI/AAAAAAAAARs/2UnmrkrWzhU/photo.jpg",\n "gender": "male",\n "locale": "ja"\n}\n',
+     _json: 
+      { id: '107244685423033367634',
+        email: 'kirimanjirou@gmail.com',
+        verified_email: true,
+        name: 'Kazunori SEKIMIZU',
+        given_name: 'Kazunori',
+        family_name: 'SEKIMIZU',
+        link: 'https://plus.google.com/107244685423033367634',
+        picture: 'https://lh5.googleusercontent.com/-9yRQ_EajRFI/AAAAAAAAAAI/AAAAAAAAARs/2UnmrkrWzhU/photo.jpg',
+        gender: 'male',
+        locale: 'ja' } } }
+[90mGET /list [32m200 [90m17ms - 3.37kb[0m
+MEMBER_LOCATION: { user: 
+   { id: '107244685423033367634',
+     displayName: 'Kazunori SEKIMIZU',
+     name: { familyName: 'SEKIMIZU', givenName: 'Kazunori' },
+     _raw: '{\n "id": "107244685423033367634",\n "email": "kirimanjirou@gmail.com",\n "verified_email": true,\n "name": "Kazunori SEKIMIZU",\n "given_name": "Kazunori",\n "family_name": "SEKIMIZU",\n "link": "https://plus.google.com/107244685423033367634",\n "picture": "https://lh5.googleusercontent.com/-9yRQ_EajRFI/AAAAAAAAAAI/AAAAAAAAARs/2UnmrkrWzhU/photo.jpg",\n "gender": "male",\n "locale": "ja"\n}\n',
+     _json: 
+      { id: '107244685423033367634',
+        email: 'kirimanjirou@gmail.com',
+        verified_email: true,
+        name: 'Kazunori SEKIMIZU',
+        given_name: 'Kazunori',
+        family_name: 'SEKIMIZU',
+        link: 'https://plus.google.com/107244685423033367634',
+        picture: 'https://lh5.googleusercontent.com/-9yRQ_EajRFI/AAAAAAAAAAI/AAAAAAAAARs/2UnmrkrWzhU/photo.jpg',
+        gender: 'male',
+        locale: 'ja' } } }
+ REPLY 2014-06-07 03:18:58:099 | {"lat":35.699566000000004,"lng":139.636438,"hig":null}
+ REPLY 2014-06-07 03:18:48:098 | {"lat":35.699566000000004,"lng":139.636438,"hig":null}
+ REPLY 2014-06-07 03:18:38:252 | {"lat":35.699566000000004,"lng":139.636438,"hig":null}
+ REPLY 2014-06-07 00:57:48:435 | {"lat":35.699566000000004,"lng":139.636438,"hig":null}
+ REPLY 2014-06-07 00:57:38:576 | {"lat":35.699566000000004,"lng":139.636438,"hig":null}
+ REPLY 2014-06-07 00:40:07:474 | {"lat":35.699566000000004,"lng":139.636438,"hig":null}
+ REPLY 2014-06-07 00:39:57:484 | {"lat":35.699566000000004,"lng":139.636438,"hig":null}
+ REPLY 2014-06-07 00:39:47:484 | {"lat":35.699566000000004,"lng":139.636438,"hig":null}
+ REPLY 2014-06-07 00:39:37:502 | {"lat":35.699566000000004,"lng":139.636438,"hig":null}
+ REPLY 2014-06-07 00:39:27:776 | {"lat":35.699566000000004,"lng":139.636438,"hig":null}
+ REPLY 2014-06-06 19:26:07:224 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-06 19:25:58:326 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-06 19:25:47:516 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-06 19:25:37:516 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-06 18:08:16:188 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-06 18:08:06:129 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-06 18:07:58:550 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-06 17:47:26:562 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-06 17:47:23:386 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-06 13:26:07:878 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-06 13:25:57:927 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-06 13:25:47:947 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-06 13:25:37:937 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-06 13:25:27:947 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-06 13:25:17:937 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-06 13:24:54:576 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-06 13:24:44:616 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-06 13:24:34:575 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-06 13:24:24:565 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-06 13:04:58:374 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-06 13:04:48:628 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-06 13:04:45:168 | {"lat":35.677660274100845,"lng":139.73491705110027,"hig":40.68577194213867}
+ REPLY 2014-06-06 13:04:38:578 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-06 13:04:35:127 | {"lat":35.677660274100845,"lng":139.73491705110027,"hig":40.68577194213867}
+ REPLY 2014-06-06 13:04:28:649 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-06 13:04:25:167 | {"lat":35.677658707518866,"lng":139.73491768194225,"hig":40.70694351196289}
+ REPLY 2014-06-06 13:04:16:367 | {"lat":35.67773225837492,"lng":139.73434655904953,"hig":40.52590560913086}
+ REPLY 2014-06-06 13:04:04:873 | {"lat":35.677663366137146,"lng":139.73492064205305,"hig":40.52590560913086}
+ REPLY 2014-06-06 13:00:53:292 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-06 12:57:09:246 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-06 12:56:59:558 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-06 12:56:50:060 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-06 12:56:39:357 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-06 12:56:29:468 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-06 12:56:19:467 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-06 12:56:00:376 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-06 12:55:50:295 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-06 12:55:40:303 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-06 12:55:30:322 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-06 12:55:20:372 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-06 12:55:10:244 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-06 12:55:00:503 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-06 12:54:50:584 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-06 12:54:36:694 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-06 12:54:26:671 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-06 12:54:16:731 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-06 12:54:06:861 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-06 12:53:56:633 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-06 12:53:46:942 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-06 12:53:36:952 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-06 12:52:01:290 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-06 12:51:51:080 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-06 12:51:40:910 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-06 12:51:31:120 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-06 12:51:20:800 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-06 12:51:10:879 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-06 12:51:00:869 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-06 12:50:51:310 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-06 12:50:40:819 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-06 12:50:30:838 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-06 12:50:20:818 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-06 12:50:11:938 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-06 12:50:00:928 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-06 12:49:43:337 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-06 12:49:33:686 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-06 12:49:23:297 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-06 12:49:13:396 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-06 12:49:03:616 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-06 12:48:53:324 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-06 12:48:32:403 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-06 12:48:22:565 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-06 12:48:12:363 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-06 12:48:02:527 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-06 12:47:54:435 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-06 12:47:42:675 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-06 12:47:21:859 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-06 12:47:15:918 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-06 12:47:02:124 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-06 12:46:52:413 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-06 12:45:08:750 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-06 12:45:02:269 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-06 12:44:48:608 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-06 12:44:41:610 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-06 12:44:28:581 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-06 12:44:18:787 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-06 12:44:08:789 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-06 12:43:58:809 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-06 12:43:48:778 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-06 12:43:39:208 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-06 12:43:28:798 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-06 12:43:18:828 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-06 12:43:08:738 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-06 12:42:58:857 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-06 12:42:48:807 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-06 12:32:37:936 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-06 11:32:21:750 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-06 11:32:11:460 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-06 11:32:01:510 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-06 11:31:51:565 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-06 11:31:17:349 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-06 11:31:07:169 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-06 11:23:40:261 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-05 01:04:52:696 | {"lat":35.67381742584643,"lng":139.73665747021337,"hig":48.989925384521484}
+ REPLY 2014-06-05 01:04:42:923 | {"lat":35.673809300002205,"lng":139.73667174999605,"hig":48.989925384521484}
+ REPLY 2014-06-05 01:04:31:785 | {"lat":35.67380929994817,"lng":139.7366717500919,"hig":48.94676971435547}
+ REPLY 2014-06-05 01:04:21:825 | {"lat":35.67380929994817,"lng":139.7366717500919,"hig":48.94676971435547}
+ REPLY 2014-06-05 01:04:11:793 | {"lat":35.67380929978509,"lng":139.73667175038116,"hig":48.77988815307617}
+ REPLY 2014-06-05 01:04:01:854 | {"lat":35.67380929978509,"lng":139.73667175038116,"hig":48.77988815307617}
+ REPLY 2014-06-05 01:03:51:752 | {"lat":35.67380938592365,"lng":139.7366715975816,"hig":48.103309631347656}
+ REPLY 2014-06-05 01:03:42:584 | {"lat":35.67380938592365,"lng":139.7366715975816,"hig":48.103309631347656}
+ REPLY 2014-06-05 01:03:41:056 | {"lat":35.67380947214186,"lng":139.73667144464076,"hig":47.9593391418457}
+ REPLY 2014-06-03 20:52:43:428 | {"lat":35.658403762207996,"lng":139.74672783704384,"hig":24}
+ REPLY 2014-06-03 20:46:30:268 | {"lat":35.63204096538208,"lng":139.7215209378963,"hig":24}
+ REPLY 2014-06-03 20:46:26:550 | {"lat":35.63068667946834,"lng":139.7197870459974,"hig":24}
+ REPLY 2014-06-03 20:46:26:259 | {"lat":35.62910524804403,"lng":139.71776233860476,"hig":24}
+ REPLY 2014-06-03 20:32:23:473 | {"lat":35.610703435059115,"lng":139.69464887518257,"hig":32.83438491821289}
+ REPLY 2014-06-03 20:32:14:685 | {"lat":35.6106228097418,"lng":139.69461975405167,"hig":31.971691131591797}
+ REPLY 2014-06-03 09:11:35:412 | {"lat":35.60366639405079,"lng":139.6912773606737,"hig":38.098388671875}
+ REPLY 2014-06-03 09:11:26:959 | {"lat":35.6035628822926,"lng":139.6912858616795,"hig":26.580760955810547}
+ REPLY 2014-06-03 08:07:18:962 | {"lat":35.699566000000004,"lng":139.636438,"hig":null}
+ REPLY 2014-06-03 08:07:08:947 | {"lat":35.699566000000004,"lng":139.636438,"hig":null}
+ REPLY 2014-06-03 08:06:59:446 | {"lat":35.699566000000004,"lng":139.636438,"hig":null}
+ REPLY 2014-06-03 08:06:30:942 | {"lat":35.699566000000004,"lng":139.636438,"hig":null}
+ REPLY 2014-06-03 06:24:07:017 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-03 06:23:57:273 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-03 06:23:47:102 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-03 06:23:36:982 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-03 06:23:27:032 | {"lat":35.685001,"lng":139.751404,"hig":null}
+ REPLY 2014-06-03 06:23:20:922 | {"lat":35.685001,"lng":139.751404,"hig":null}
+REDISDATA [ '{"lat":35.699566000000004,"lng":139.636438,"hig":null}',
+  '{"lat":35.699566000000004,"lng":139.636438,"hig":null}',
+  '{"lat":35.699566000000004,"lng":139.636438,"hig":null}',
+  '{"lat":35.699566000000004,"lng":139.636438,"hig":null}',
+  '{"lat":35.699566000000004,"lng":139.636438,"hig":null}',
+  '{"lat":35.699566000000004,"lng":139.636438,"hig":null}',
+  '{"lat":35.699566000000004,"lng":139.636438,"hig":null}',
+  '{"lat":35.699566000000004,"lng":139.636438,"hig":null}',
+  '{"lat":35.699566000000004,"lng":139.636438,"hig":null}',
+  '{"lat":35.699566000000004,"lng":139.636438,"hig":null}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.677660274100845,"lng":139.73491705110027,"hig":40.68577194213867}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.677660274100845,"lng":139.73491705110027,"hig":40.68577194213867}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.677658707518866,"lng":139.73491768194225,"hig":40.70694351196289}',
+  '{"lat":35.67773225837492,"lng":139.73434655904953,"hig":40.52590560913086}',
+  '{"lat":35.677663366137146,"lng":139.73492064205305,"hig":40.52590560913086}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.67381742584643,"lng":139.73665747021337,"hig":48.989925384521484}',
+  '{"lat":35.673809300002205,"lng":139.73667174999605,"hig":48.989925384521484}',
+  '{"lat":35.67380929994817,"lng":139.7366717500919,"hig":48.94676971435547}',
+  '{"lat":35.67380929994817,"lng":139.7366717500919,"hig":48.94676971435547}',
+  '{"lat":35.67380929978509,"lng":139.73667175038116,"hig":48.77988815307617}',
+  '{"lat":35.67380929978509,"lng":139.73667175038116,"hig":48.77988815307617}',
+  '{"lat":35.67380938592365,"lng":139.7366715975816,"hig":48.103309631347656}',
+  '{"lat":35.67380938592365,"lng":139.7366715975816,"hig":48.103309631347656}',
+  '{"lat":35.67380947214186,"lng":139.73667144464076,"hig":47.9593391418457}',
+  '{"lat":35.658403762207996,"lng":139.74672783704384,"hig":24}',
+  '{"lat":35.63204096538208,"lng":139.7215209378963,"hig":24}',
+  '{"lat":35.63068667946834,"lng":139.7197870459974,"hig":24}',
+  '{"lat":35.62910524804403,"lng":139.71776233860476,"hig":24}',
+  '{"lat":35.610703435059115,"lng":139.69464887518257,"hig":32.83438491821289}',
+  '{"lat":35.6106228097418,"lng":139.69461975405167,"hig":31.971691131591797}',
+  '{"lat":35.60366639405079,"lng":139.6912773606737,"hig":38.098388671875}',
+  '{"lat":35.6035628822926,"lng":139.6912858616795,"hig":26.580760955810547}',
+  '{"lat":35.699566000000004,"lng":139.636438,"hig":null}',
+  '{"lat":35.699566000000004,"lng":139.636438,"hig":null}',
+  '{"lat":35.699566000000004,"lng":139.636438,"hig":null}',
+  '{"lat":35.699566000000004,"lng":139.636438,"hig":null}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}',
+  '{"lat":35.685001,"lng":139.751404,"hig":null}' ]
+[90mGET /memberlocation?sub=107244685423033367634 [32m200 [90m37ms - 14.87kb[0m
+[90mGET /javascripts/location.js [32m200 [90m2ms - 1.2kb[0m
+LOGIN: { cookie: 
+   { path: '/',
+     _expires: null,
+     originalMaxAge: null,
+     httpOnly: true },
+  passport: 
+   { user: 
+      { id: '107244685423033367634',
+        displayName: 'Kazunori SEKIMIZU',
+        name: [Object],
+        _raw: '{\n "id": "107244685423033367634",\n "email": "kirimanjirou@gmail.com",\n "verified_email": true,\n "name": "Kazunori SEKIMIZU",\n "given_name": "Kazunori",\n "family_name": "SEKIMIZU",\n "link": "https://plus.google.com/107244685423033367634",\n "picture": "https://lh5.googleusercontent.com/-9yRQ_EajRFI/AAAAAAAAAAI/AAAAAAAAARs/2UnmrkrWzhU/photo.jpg",\n "gender": "male",\n "locale": "ja"\n}\n',
+        _json: [Object] } } }
+[90mGET / [36m304 [90m4ms[0m
+SETTING: { user: 
+   { id: '107244685423033367634',
+     displayName: 'Kazunori SEKIMIZU',
+     name: { familyName: 'SEKIMIZU', givenName: 'Kazunori' },
+     _raw: '{\n "id": "107244685423033367634",\n "email": "kirimanjirou@gmail.com",\n "verified_email": true,\n "name": "Kazunori SEKIMIZU",\n "given_name": "Kazunori",\n "family_name": "SEKIMIZU",\n "link": "https://plus.google.com/107244685423033367634",\n "picture": "https://lh5.googleusercontent.com/-9yRQ_EajRFI/AAAAAAAAAAI/AAAAAAAAARs/2UnmrkrWzhU/photo.jpg",\n "gender": "male",\n "locale": "ja"\n}\n',
+     _json: 
+      { id: '107244685423033367634',
+        email: 'kirimanjirou@gmail.com',
+        verified_email: true,
+        name: 'Kazunori SEKIMIZU',
+        given_name: 'Kazunori',
+        family_name: 'SEKIMIZU',
+        link: 'https://plus.google.com/107244685423033367634',
+        picture: 'https://lh5.googleusercontent.com/-9yRQ_EajRFI/AAAAAAAAAAI/AAAAAAAAARs/2UnmrkrWzhU/photo.jpg',
+        gender: 'male',
+        locale: 'ja' } } }
+[90mGET /setting [32m200 [90m20ms - 1.94kb[0m
+LOGIN: { cookie: 
+   { path: '/',
+     _expires: null,
+     originalMaxAge: null,
+     httpOnly: true },
+  passport: 
+   { user: 
+      { id: '107244685423033367634',
+        displayName: 'Kazunori SEKIMIZU',
+        name: [Object],
+        _raw: '{\n "id": "107244685423033367634",\n "email": "kirimanjirou@gmail.com",\n "verified_email": true,\n "name": "Kazunori SEKIMIZU",\n "given_name": "Kazunori",\n "family_name": "SEKIMIZU",\n "link": "https://plus.google.com/107244685423033367634",\n "picture": "https://lh5.googleusercontent.com/-9yRQ_EajRFI/AAAAAAAAAAI/AAAAAAAAARs/2UnmrkrWzhU/photo.jpg",\n "gender": "male",\n "locale": "ja"\n}\n',
+        _json: [Object] } } }
+[90mGET / [36m304 [90m5ms[0m
+RuleLIST: { user: 
+   { id: '107244685423033367634',
+     displayName: 'Kazunori SEKIMIZU',
+     name: { familyName: 'SEKIMIZU', givenName: 'Kazunori' },
+     _raw: '{\n "id": "107244685423033367634",\n "email": "kirimanjirou@gmail.com",\n "verified_email": true,\n "name": "Kazunori SEKIMIZU",\n "given_name": "Kazunori",\n "family_name": "SEKIMIZU",\n "link": "https://plus.google.com/107244685423033367634",\n "picture": "https://lh5.googleusercontent.com/-9yRQ_EajRFI/AAAAAAAAAAI/AAAAAAAAARs/2UnmrkrWzhU/photo.jpg",\n "gender": "male",\n "locale": "ja"\n}\n',
+     _json: 
+      { id: '107244685423033367634',
+        email: 'kirimanjirou@gmail.com',
+        verified_email: true,
+        name: 'Kazunori SEKIMIZU',
+        given_name: 'Kazunori',
+        family_name: 'SEKIMIZU',
+        link: 'https://plus.google.com/107244685423033367634',
+        picture: 'https://lh5.googleusercontent.com/-9yRQ_EajRFI/AAAAAAAAAAI/AAAAAAAAARs/2UnmrkrWzhU/photo.jpg',
+        gender: 'male',
+        locale: 'ja' } } }
+[90mGET /rule [32m200 [90m24ms - 2.47kb[0m
