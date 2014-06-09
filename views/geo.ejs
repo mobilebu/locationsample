@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+  <head>
+    <meta charset="utf-8">
+    <title>Location Sample Member List</title>
+    <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Le styles -->
+    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+      body { padding-top: 60px; /* 60px to make the container go all the way
+      to the bottom of the topbar */ }
+    </style>
+    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js">
+      </script>
+    <![endif]-->
+    <style type="text/css">
+      #notice-area {
+        max-width: 400px;
+        margin-bottom: 5px;
+      }
+      .notice-time {
+        margin-left: 15px;
+      }
+    </style>
+  </head>
+
+ <body>
+   <nav class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">MobileBU-lab</a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active">
+              <a href="/">Home</a>
+            </li>
+            <li class="active">
+              <a href="/list">List</a>
+            </li>
+            <li class="active">
+              <a href="/logout">Logout</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+<div class="container">
+
+ <h1>Location Upload</h1>
+ <p><%= dName %> としてログインしています</a></p>
+<p>あなたの現在地情報をサーバに送信しています。<img src="/images/loading.gif" width="30" height="30"></p>
+<div id="show_result"></div>
+<div id="sub" title="<%= sub %>"></div>
+
+<div id="noticearea"></div>
+
+    <script type="text/javascript" src="javascripts/geo_client.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+</div>
+</body> 
+</html>
+
