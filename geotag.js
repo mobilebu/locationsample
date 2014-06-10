@@ -1,3 +1,5 @@
+var rule = require('./rule');
+
 // 8888番ポートでクライアントの接続を待ち受ける
 var ws = require('websocket.io');
 var server = ws.listen(3500, function () {
@@ -35,7 +37,7 @@ server.on('connection', function(socket) {
   data.time = d.getFullYear()  + "-" + ( '0' + (d.getMonth() + 1)).slice( -2 ) + "-" + ( '0' + d.getDate() ).slice( -2 ) + " " + ( '0' + d.getHours() ).slice( -2 ) + ":" +( '0' + d.getMinutes() ).slice( -2 ) + ":" +( '0' + d.getSeconds() ).slice( -2 );
 
   //redisにデータ格納
-  redisClient.sadd(data.sub,data.time + ":" + ('0' + d.getMilliseconds()).slice( -3 ) + " | " + JSON.stringify(geo))
+  redisClient.sadd(data.sub,data.time + ":" + ('00' + d.getMilliseconds()).slice( -3 ) + " | " + JSON.stringify(geo))
 
   //mysqlにデータ格納
   var updateSql = "UPDATE member_list set location = ?, geo_flag = 1 where sub = ?;"
@@ -48,5 +50,15 @@ server.on('connection', function(socket) {
    console.log('UPDATE_END');
   });
 
+  var selectSql = "select push_item_id from push_item;"
+  var getQuery = connection.query(selectSql);
+  getQuery
+   .on('error', function(err){
+   })
+
+   .on('result',function(rows){
+   console.log("卍卍卍卍CALL RULE PUSH卍卍卍卍")
+   rule.getRulePoint(rows.push_item_id,data.sub);
+  });
  });
 });
