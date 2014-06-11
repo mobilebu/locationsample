@@ -47,17 +47,19 @@
    <table class="table table-bordered">
    <tr>
 	<th>No</th>
-	<th>位置設定</th>
-	<th>時刻設定</th>
-        <th>ユーザ</th>
-        <th>操作</th>
+	<th>title</th>
+	<th>説明</th>
+	<th>動作時間</th>
+        <th>PUSH</th>
+        <th>操作(工事中)</th>
    </tr>
    <% for(var i=0; i<rule.length; i++) { %>
    <tr>
 	<td><%= i + 1 %></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td><%= rule[i].title %></td>
+        <td><%= rule[i].discription %></td>
+        <td><%= rule[i].schedule_from %> から <%= rule[i].schedule_to %> </td>
+        <td><%=  dName %>から田中課長</td>
 	<td><a href="/rule_edit" class="btn btn-default "><span class="glyphicon glyphicon-book"></span>Edit</a>
             <a href="#" class="btn btn-default "><span class="glyphicon glyphicon-play"></span>Push</a>
             <a href="#" class="btn btn-default "><span class="glyphicon glyphicon-remove-sign"></span>Delete</a></td>
