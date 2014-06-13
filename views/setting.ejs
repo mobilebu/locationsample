@@ -22,39 +22,24 @@
   </head>
 
  <body>
-   <nav class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="#">MobileBU-lab</a>
-        </div>
-        <div class="collapse navbar-collapse navbar-ex1-collapse">
-          <ul class="nav navbar-nav">
-            <li class="active">
-              <a href="/">Home</a>
-            </li>
-            <li class="active">
-              <a href="/list">List</a>
-            </li>
-            <li class="active">
-              <a href="/logout">Logout</a>
-            </li>
-          </ul>
-        </div>
-      </nav>
+<% include nav %>
 <div class="container">
    <h1>My Setting</h1>
     <p><%= dName %> としてログインしています</a></p>
 
    <table class="table table-bordered">
    <tr>
-	<th>#</th>
-        <th>Name</th>
-   <% for(var i=0; i<mySettings.length; i++) { %>
-   <tr>
-	<td><%= i + 1 %></td>
-	<td><%= mySettings[i].name %></td>
+	<th>Name</th>
+        <td><input type="title" class="form-control" id="user_name" value="<%= mySettings[0].name %>" placeholder="Your name"></td>
    </tr>
-  <% } %>
+
+   <tr>
+        <th>Email</th>
+        <td><input type="title" class="form-control" id="user_email" value="<%= mySettings[0].email %>" placeholder="Your email address"></td>
+   </tr>
   </table>
+
+    <a href="" class="btn btn-default "><span class="glyphicon glyphicon-book"></span>Edit</a>
 </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>

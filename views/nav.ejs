@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ja">
+ <body>
+   <nav class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">MobileBU-lab</a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active">
+              <a href="/">Home</a>
+            </li>
+            <% if (dName != null) { %>
+            <li class="active">
+              <a href="/list">List</a>
+            </li>
+            <li class="active">
+              <a href="/rule">Push</a>
+            </li>
+            <li class="active">
+              <a href="/setting">Setting</a>
+            </li>
+            <li class="active">
+              <a href="/logout">Logout</a>
+            </li>
+            <% } %>
+          </ul>
+        </div>
+      </nav>
+ </body>
+</html>
