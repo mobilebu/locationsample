@@ -2,19 +2,9 @@ var express = require('express');
 var passport = require('passport');
 var router = express.Router();
 var ondemand = require('../ondemand');
+var config = require('../config');
 
 //LocationApp
-var mysql = require('mysql');
-var connection = mysql.createConnection({
- host: process.env.DB_HOST || 'localhost',
- user: process.env.DB_USER || 'root',
- password: process.env.DB_PASS || '',
- database: process.env.DB_NAME || 'LOCATION'
-});
-//redis
-var redis  = require('redis');
-var redisClient = redis.createClient();
-
 /* GET home page. */
 router.get('/', function(req, res) {
   if (req.session.passport.user) {
@@ -63,7 +53,7 @@ router.get('/rule',function(req, res){
   var rule_dbData = [];
   var ondemand_dbData = [];
   var selectSql = "select * from push_item;";
-  var getQuery = connection.query(selectSql);
+  var getQuery = config.connection.query(selectSql);
 
   getQuery
    .on('error', function(err){
@@ -98,7 +88,7 @@ router.get('/rule_edit',function(req, res){
   console.log("RuleEDIT:",req.session.passport);
   var dbData = [];
   var selectSql = "select * from member_list;";
-  var getQuery = connection.query(selectSql);
+  var getQuery = config.connection.query(selectSql);
 
   getQuery
    .on('error', function(err){
@@ -141,7 +131,7 @@ router.get('/setting',function(req, res){
   console.log("SETTING:",req.session.passport);
   var dbData = [];
   var selectSql = "select * from member_list where sub = ?;";
-  var getQuery = connection.query(selectSql,[req.session.passport.user.id]);
+  var getQuery = config.connection.query(selectSql,[req.session.passport.user.id]);
 
   getQuery
    .on('error', function(err){
@@ -207,7 +197,7 @@ router.get('/list',function(req, res){
   console.log("LIST:",req.session.passport);
   var dbData = [];
   var selectSql = "select * from member_list;";
-  var getQuery = connection.query(selectSql);
+  var getQuery = config.connection.query(selectSql);
 
   getQuery
    .on('error', function(err){
@@ -238,7 +228,7 @@ router.get('/memberlocation',function(req, res){
   var redisData = [];
   var lat = [];
   var lng = [];
-  redisClient.sort(req.query.sub,"ALPHA","DESC", function (err, replies) {
+  config.redisClient.sort(req.query.sub,"ALPHA","DESC", function (err, replies) {
    if (replies){
     replies.forEach(function (reply,i){
      console.log(" REPLY",reply);

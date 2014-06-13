@@ -5,23 +5,11 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var location = require('./function');
+var config = require("./config");
 
-//mysql
-var mysql = require('mysql');
-var connection = mysql.createConnection({
-        host: 'localhost',
-        database: 'LOCATION',
-        user: 'root',
-        password: ''
-});
-
-//redis
-var redis  = require('redis');
-var redisClient = redis.createClient();
-
-function getRulePoint (item_id,sub){
- var selectSql = "select X(local_center) AS lat ,Y(local_center) AS lng, local_distance, schedule_from, schedule_to from push_item where push_item_id = ? and CURTIME() between schedule_from and schedule_to ;";
- var getQuery = connection.query(selectSql,[item_id]);
+function exacLocationRule (item_id,sub){
+ var selectSql = "select X(local_center) AS lat ,Y(local_center) AS lng, local_distance, schedule_from, schedule_to from push_item where push_item_id = ? and CURTIME() between schedule_from and schedule_to and ondemand_flag != 1;";
+ var getQuery = config.connection.query(selectSql,[item_id]);
 
   getQuery
    .on('error', function(err){
@@ -44,7 +32,7 @@ function getRulePoint (item_id,sub){
     var redisData = [];
     var redisLat = [];
     var redisLng = [];
-    redisClient.sort(sub,"ALPHA","DESC","LIMIT", "0", "2", function (err, replies) {
+    config.redisClient.sort(sub,"ALPHA","DESC","LIMIT", "0", "2", function (err, replies) {
     if (replies){
      console.log("---REDIS SELECT USER IS:[", sub, "]---");
      replies.forEach(function (reply,i){
@@ -83,7 +71,7 @@ function getRulePoint (item_id,sub){
       if (distance < rows.local_distance) {
        // トランスポートオブジェクトでメールを送信
        console.log("---SEND MAIL SITUATION---");
-       smtpTransport.sendMail(mailOptions, function (error, response) {
+       config.smtpTransport.sendMail(mailOptions, function (error, response) {
         if (error) {
          console.log(error);
         }else {
@@ -107,16 +95,6 @@ function getRulePoint (item_id,sub){
    });
  });
 };
-
-//node_mailer
-var nodemailer = require("nodemailer");
-var smtpTransport = nodemailer.createTransport("SMTP", {
-    service: "Gmail",
-    auth: {
-        user: "nttdmobilebu2014@gmail.com",
-        pass: "sekimizukazunori"
-    }
-});
 
 var mailOptions = {
     from: "Location Sample Test Accoount <mobilebu2014@gmail.com>", // sender address
@@ -143,4 +121,4 @@ var getDistance = function(p1, p2) {
 };
 
 
-exports.getRulePoint = getRulePoint;
+exports.exacLocationRule = exacLocationRule;

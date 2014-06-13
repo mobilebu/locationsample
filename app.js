@@ -4,6 +4,7 @@ var favicon = require('static-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var config = require('./config');
 
 //OIDC
 var session = require('express-session');
@@ -11,14 +12,6 @@ var passport = require('passport');
 var OpenidConnectStrategy = require('passport-openidconnect').Strategy;
 var GoogleOpenidConnectStrategy = require('passport-openidconnect-google').Strategy;
 var YahooOpenidConnectStrategy = require('passport-openidconnect-yahoo').Strategy;
-
-var mysql = require('mysql');
-var connection = mysql.createConnection({
-        host: 'localhost',
-        database: 'LOCATION',
-        user: 'root',
-        password: ''
-});
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -79,9 +72,9 @@ passport.use(new GoogleOpenidConnectStrategy({
         authorizationURL: "https://accounts.google.com/o/oauth2/auth",
         tokenURL: "https://accounts.google.com/o/oauth2/token",
         userInfoURL: "https://www.googleapis.com/oauth2/v1/userinfo",
-        clientID: "182694024161-c2b9loeji1qg3d0255oblee3dmhj6qen.apps.googleusercontent.com",
-        clientSecret: "qbzbmHOqbrgdcLKK2sy51Vf1",
-        callbackURL: "http://ec2-54-178-192-53.ap-northeast-1.compute.amazonaws.com:3000/auth/google/callback",
+        clientID: "", //ENTER YOUR ENVIROMENT
+        clientSecret: "", //ENTER YOUR ENVIROMENT
+        callbackURL: "", //ENTER YOUR ENVIROMENT
         scope: ["https://www.googleapis.com/auth/userinfo.email", "https://www.googleapis.com/auth/userinfo.profile" ]
         },
         function(accessToken, refreshToken, profile, done){
@@ -91,7 +84,7 @@ passport.use(new GoogleOpenidConnectStrategy({
          console.log("PROFILENAME:",profile._json.name);
 	 console.log("PROFILEEMAIL:",profile._json.email);
 	 var selectSql = 'SELECT * FROM member_list WHERE sub = ?;';
- 	var getQuery = connection.query(selectSql,[profile._json.id]);
+ 	var getQuery = config.connection.query(selectSql,[profile._json.id]);
 	 var insertFlg = 1;
 
 	 getQuery
@@ -108,7 +101,7 @@ passport.use(new GoogleOpenidConnectStrategy({
 	   console.log('GET_END');
 	   if (insertFlg =="1"){
 	    var insertSql = 'INSERT INTO member_list(sub,name,email) VALUES (?,?,?);';
-	    var insertQuery = connection.query(insertSql,[profile._json.id,profile._json.name,profile._json.email]);
+	    var insertQuery = config.connection.query(insertSql,[profile._json.id,profile._json.name,profile._json.email]);
     	    insertQuery
      .on('error', function(err){
       console.log('ERR:',err);
@@ -131,9 +124,9 @@ passport.use(new YahooOpenidConnectStrategy({
         authorizationURL: "https://auth.login.yahoo.co.jp/yconnect/v1/authorization",
         tokenURL: "https://auth.login.yahoo.co.jp/yconnect/v1/token",
         userInfoURL: "https://userinfo.yahooapis.jp/yconnect/v1/attribute",
-        clientID: "dj0zaiZpPTlhbEV0aGd1QmhhYiZzPWNvbnN1bWVyc2VjcmV0Jng9Mzg-",
-        clientSecret: "093ec33daf9b3534069dfb5f1df8dfdea260955d",
-        callbackURL: "http://ec2-54-178-192-53.ap-northeast-1.compute.amazonaws.com:3000/auth/yahoo/callback",
+        clientID: "", //ENTER YOUR ENVIROMENT
+        clientSecret: "", //ENTER YOUR ENVIROMENT
+        callbackURL: "", //ENTER YOUR ENVIROMENT
         scope: ["profile email"]
         },
         function(accessToken, refreshToken, profile, done){
@@ -144,7 +137,7 @@ passport.use(new YahooOpenidConnectStrategy({
          console.log("PROFILENAME:",profile._json.name);
          console.log("PROFILEEMAIL:",profile._json.email);
          var selectSql = 'SELECT * FROM member_list WHERE sub = ?;';
-        var getQuery = connection.query(selectSql,[profile._json.id]);
+        var getQuery = config.connection.query(selectSql,[profile._json.id]);
          var insertFlg = 1;
 
          getQuery
@@ -161,7 +154,7 @@ passport.use(new YahooOpenidConnectStrategy({
            console.log('GET_END');
            if (insertFlg =="1"){
             var insertSql = 'INSERT INTO member_list(sub,name,email) VALUES (?,?,?);';
-            var insertQuery = connection.query(insertSql,[profile._json.user_id,profile._json.name,profile._json.email]);
+            var insertQuery = config.connection.query(insertSql,[profile._json.user_id,profile._json.name,profile._json.email]);
             insertQuery
      .on('error', function(err){
       console.log('ERR:',err);

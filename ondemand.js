@@ -5,20 +5,11 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var location = require('./function');
-
-//mysql
-var mysql = require('mysql');
-var connection = mysql.createConnection({
-        host: 'localhost',
-        database: 'LOCATION',
-        user: 'root',
-        password: ''
-});
-
+var config = require('./config');
 
 function exacOndemandRule (item_id){
  var select_rule_Sql = "select X(local_center) AS lat ,Y(local_center) AS lng, local_distance, schedule_from, schedule_to from push_item where push_item_id = ? and CURTIME() between schedule_from and schedule_to and ondemand_flag = 1;";
- var getRuleQuery = connection.query(select_rule_Sql,[item_id]);
+ var getRuleQuery = config.connection.query(select_rule_Sql,[item_id]);
 
  getRuleQuery
   .on('error', function(err){
@@ -33,7 +24,7 @@ function exacOndemandRule (item_id){
   console.log("RULE_TIME_TO  :",rows.schedule_to);
   console.log("-------------------------------");
    var select_member_Sql = "select sub ,email ,location from member_list where location IS NOT NULL;"
-   var getMemberQuery = connection.query(select_member_Sql);
+   var getMemberQuery = config.connection.query(select_member_Sql);
 
    getMemberQuery
     .on('error', function(err){
@@ -66,7 +57,7 @@ function exacOndemandRule (item_id){
        text: "どうですかーーー！！！", // plaintext body
        html: "<h2>赤坂配信（埋め込み）</h2><p>登録地点: AKASAKA K-TOWER (35.677709,139.734901)（埋め込み）</p><p>距離指定: 100m（以内（埋め込み））</p><p></p><p>上記ロケーションにいる方に便利なインフォメーションの配信です！</p>"
       }
-      smtpTransport.sendMail(mailOptions, function (error, response) {
+      config.smtpTransport.sendMail(mailOptions, function (error, response) {
        if (error) {
         console.log(error);
        }else {
@@ -81,16 +72,6 @@ function exacOndemandRule (item_id){
    });
  });
 };
-
-//node_mailer
-var nodemailer = require("nodemailer");
-var smtpTransport = nodemailer.createTransport("SMTP", {
-    service: "Gmail",
-    auth: {
-        user: "nttdmobilebu2014@gmail.com",
-        pass: "sekimizukazunori"
-    }
-});
 
 var rad = function(x) {
   return x * Math.PI / 180;
