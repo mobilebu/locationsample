@@ -1,6 +1,7 @@
 var express = require('express');
 var passport = require('passport');
 var router = express.Router();
+var ondemand = require('../ondemand');
 
 //LocationApp
 var mysql = require('mysql');
@@ -47,15 +48,20 @@ router.get('/geo', function(req, res) {
   }
 });
 
+router.get('/android', function(req, res){
+  res.send();
+});
 router.post('/android', function(req, res){
   console.log("BODY:",req.body); 
+  res.send();
 });
 
 //LocationApp RuleList
 router.get('/rule',function(req, res){
  if (req.session.passport.user) {
   console.log("RuleLIST:",req.session.passport);
-  var dbData = [];
+  var rule_dbData = [];
+  var ondemand_dbData = [];
   var selectSql = "select * from push_item;";
   var getQuery = connection.query(selectSql);
 
@@ -64,12 +70,17 @@ router.get('/rule',function(req, res){
    })
 
    .on('result',function(rows){
-   dbData.push(rows);
+    if (rows.ondemand_flag == "1"){
+     ondemand_dbData.push(rows);
+    }else{
+     rule_dbData.push(rows);
+    }
    })
 
    .on('end',function(){
     res.render('rule',{
-     rule: dbData,
+     rule: rule_dbData,
+     ondemand: ondemand_dbData,
      dName: req.session.passport.user.displayName,
      sub: req.session.passport.user.id
     });
@@ -85,11 +96,38 @@ router.get('/rule',function(req, res){
 router.get('/rule_edit',function(req, res){
  if (req.session.passport.user) {
   console.log("RuleEDIT:",req.session.passport);
+  var dbData = [];
+  var selectSql = "select * from member_list;";
+  var getQuery = connection.query(selectSql);
 
-  res.render('rule_edit',{
-  dName: req.session.passport.user.displayName,
-  sub: req.session.passport.user.id
+  getQuery
+   .on('error', function(err){
+   })
+
+   .on('result',function(rows){
+   dbData.push(rows);
+   })
+
+   .on('end',function(){
+    res.render('rule_edit',{
+     user: dbData,
+     dName: req.session.passport.user.displayName,
+     sub: req.session.passport.user.id
+    });
   });
+ }else{
+  res.render('index',{
+   dName: null
+  });
+ }
+});
+
+//LocationApp exacOndemand
+router.get('/exac_ondemand',function(req, res){
+ if (req.session.passport.user) {
+  console.log("卍卍卍ONDEMAND PUSH卍卍卍");
+  ondemand.exacOndemandRule(req.query.item_id);
+  res.redirect('/rule');
  }else{
   res.render('index',{
    dName: null

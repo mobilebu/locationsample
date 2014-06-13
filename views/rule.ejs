@@ -43,7 +43,8 @@
 <div class="container">
    <h1>Rule List</h1>
     <p><%= dName %> としてログインしています</a></p>
-
+   
+   <h2> 位置情報配信 </h2>
    <table class="table table-bordered">
    <tr>
 	<th>No</th>
@@ -61,11 +62,33 @@
         <td><%= rule[i].schedule_from %> から <%= rule[i].schedule_to %> </td>
         <td><%=  dName %>から田中課長</td>
 	<td><a href="/rule_edit" class="btn btn-default "><span class="glyphicon glyphicon-book"></span>Edit</a>
-            <a href="#" class="btn btn-default "><span class="glyphicon glyphicon-play"></span>Push</a>
             <a href="#" class="btn btn-default "><span class="glyphicon glyphicon-remove-sign"></span>Delete</a></td>
   </tr>
   <% } %>
   </table>
+
+  <h2> オンデマンド配信</h2>
+  <table class="table table-bordered">
+   <tr>
+        <th>No</th>
+        <th>title</th>
+        <th>説明</th>
+        <th>動作時間</th>
+        <th>操作(工事中)</th>
+   </tr>
+  <% for(var i=0; i<ondemand.length; i++) { %>
+   <tr>
+        <td><%= i + 1 %></td>
+        <td><%= ondemand[i].title %></td>
+        <td><%= ondemand[i].discription %></td>
+        <td><%= ondemand[i].schedule_from %> から <%= ondemand[i].schedule_to %> </td>
+        <td><a href="/rule_edit" class="btn btn-default "><span class="glyphicon glyphicon-book"></span>Edit</a>
+            <a href="/exac_ondemand?item_id=<%= ondemand[i].push_item_id %>" class="btn btn-default "><span class="glyphicon glyphicon-play"></span>Push</a>
+            <a href="#" class="btn btn-default "><span class="glyphicon glyphicon-remove-sign"></span>Delete</a></td>
+  </tr>
+  <% } %>
+  </table>
+
 <p><a href="/rule_edit" class="btn btn-default "><span class="glyphicon glyphicon-plus-sign"></span></a></p>
 
 </div>
