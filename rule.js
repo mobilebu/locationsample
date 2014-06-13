@@ -1,9 +1,3 @@
-var express = require('express');
-var path = require('path');
-var favicon = require('static-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
 var location = require('./function');
 var config = require("./config");
 
@@ -66,11 +60,18 @@ function exacLocationRule (item_id,sub){
      if(location.locationCheck(userLocation) == "Change") {
 
       //Rule定義を参照し、登録位置とユーザの位置の距離を取得する
-      var distance = getDistance(rows,after)
+      var distance = location.getDistance(rows,after)
       console.log("DISTANCE:",distance);
       if (distance < rows.local_distance) {
        // トランスポートオブジェクトでメールを送信
        console.log("---SEND MAIL SITUATION---");
+       var mailOptions = {
+	from: "Location Sample Test Accoount <mobilebu2014@gmail.com>", // sender address
+	to: "tanakahdy@nttdata.co.jp",// list of receivers
+    	subject: "Location Sample Test Message", // Subject line
+    	text: "どうですかーーー！！！", // plaintext body
+	html: "<h2>赤坂チェック（埋め込み）</h2><p>登録地点: AKASAKA K-TOWER (35.677709,139.734901)（埋め込み）</p><p>距離指定: 100m（以内（埋め込み））</p><p></p><p>上記ロケーションにKazunori Sekimizu（埋め込み）が立ち入りました</p>"
+}
        config.smtpTransport.sendMail(mailOptions, function (error, response) {
         if (error) {
          console.log(error);
@@ -95,30 +96,5 @@ function exacLocationRule (item_id,sub){
    });
  });
 };
-
-var mailOptions = {
-    from: "Location Sample Test Accoount <mobilebu2014@gmail.com>", // sender address
-    to: "tanakahdy@nttdata.co.jp",// list of receivers
-    subject: "Location Sample Test Message", // Subject line
-    text: "どうですかーーー！！！", // plaintext body
-    html: "<h2>赤坂チェック（埋め込み）</h2><p>登録地点: AKASAKA K-TOWER (35.677709,139.734901)（埋め込み）</p><p>距離指定: 100m（以内（埋め込み））</p><p></p><p>上記ロケーションにKazunori Sekimizu（埋め込み）が立ち入りました</p>"
-}
-
-var rad = function(x) {
-  return x * Math.PI / 180;
-};
-
-var getDistance = function(p1, p2) {
-  var R = 6371000; // Earth’s mean radius in meter
-  var dLat = rad(p2.lat - p1.lat);
-  var dLong = rad(p2.lng - p1.lng);
-  var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-    Math.cos(rad(p1.lat)) * Math.cos(rad(p2.lat)) *
-    Math.sin(dLong / 2) * Math.sin(dLong / 2);
-  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-  var d = R * c;
-  return d; // returns the distance in meter
-};
-
 
 exports.exacLocationRule = exacLocationRule;
