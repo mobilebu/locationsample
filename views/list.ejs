@@ -35,13 +35,21 @@
         <th>Location Link</th>
    </tr>
    <% for(var i=0; i<user.length; i++) { %>
+   <% if (sub == user[i].sub ) { %>
+   <tr class="active">
+   <% }else{ %>
    <tr>
+   <% } %>
 	<td><%= i + 1 %></td>
 	<td><%= user[i].name %></td>
 	<td><%= user[i].last_modifie %></td>
         <td>
           <% if (user[i].geo_flag){ %>
-           <a href="/memberlocation?sub=<%= user[i].sub %>">位置情報</a>
+           <% if (sub == user[i].sub ) { %>
+            <a href="/memberlocation?sub=<%= user[i].sub %>">位置情報</a>
+           <% }else{ %>
+            閲覧許可なし
+           <% } %>
           <% }else{ %>
            未登録
           <% } %>

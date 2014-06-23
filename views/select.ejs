@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+  <head>
+    <meta charset="utf-8">
+    <title>Location Sample</title>
+    <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Le styles -->
+    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+      body { padding-top: 60px; /* 60px to make the container go all the way
+      to the bottom of the topbar */ }
+    </style>
+    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js">
+      </script>
+    <![endif]-->
+  </head>
+
+ <body>
+<% include nav %>
+<div class="container">
+   <h1>Location Sample</h1>
+    <p><%= dName %> としてログインしています</a></p>
+   <p>
+<h2>新規ルール作成</h2>
+<h3>作成したいルールを選んでください。</h3>
+<p><a href="location_edit">エリア配信</a>：特定の位置情報を基準に、あなたがエリアに入ったら/出たら配信を行います。</p>
+<p><a href="human_edit">対人配信</a>：指定したユーザを基準に、あなたが近づいたら/遠ざかったら配信を行います。</p>
+<p><a href="ondemand_edit">オンデマンド配信</a>：特定の位置情報を基準に、指定したユーザに対しオンデマンドで配信を行います。</p>
+
+</body>
+</html>
+

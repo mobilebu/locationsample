@@ -3,6 +3,8 @@ var passport = require('passport');
 var router = express.Router();
 var ondemand = require('../ondemand');
 var config = require('../config');
+var functionMod = require('../function');
+functionMod.handleDisconnect(config.connection);
 
 //LocationApp
 /* GET home page. */
@@ -39,7 +41,7 @@ router.get('/geo', function(req, res) {
 });
 
 router.get('/android', function(req, res){
-  res.send();
+  res.send(req.body.name);
 });
 router.post('/android', function(req, res){
   console.log("BODY:",req.body); 
@@ -82,7 +84,7 @@ router.get('/rule',function(req, res){
  }
 });
 
-//LocationApp RuleEdit
+//LocationApp SelectRuleEdit
 router.get('/rule_edit',function(req, res){
  if (req.session.passport.user) {
   console.log("RuleEDIT:",req.session.passport);
@@ -99,7 +101,97 @@ router.get('/rule_edit',function(req, res){
    })
 
    .on('end',function(){
+    res.render('select',{
+     user: dbData,
+     dName: req.session.passport.user.displayName,
+     sub: req.session.passport.user.id
+    });
+  });
+ }else{
+  res.render('index',{
+   dName: null
+  });
+ }
+});
+
+//LocationApp MakeLocationRule
+router.get('/location_edit',function(req, res){
+ if (req.session.passport.user) {
+  console.log("RuleEDIT:",req.session.passport);
+  var dbData = [];
+  var selectSql = "select * from member_list;";
+  var getQuery = config.connection.query(selectSql);
+
+  getQuery
+   .on('error', function(err){
+   })
+
+   .on('result',function(rows){
+   dbData.push(rows);
+   })
+
+   .on('end',function(){
     res.render('rule_edit',{
+     user: dbData,
+     dName: req.session.passport.user.displayName,
+     sub: req.session.passport.user.id
+    });
+  });
+ }else{
+  res.render('index',{
+   dName: null
+  });
+ }
+});
+
+//LocationApp MakeHumanRule
+router.get('/human_edit',function(req, res){
+ if (req.session.passport.user) {
+  console.log("RuleEDIT:",req.session.passport);
+  var dbData = [];
+  var selectSql = "select * from member_list;";
+  var getQuery = config.connection.query(selectSql);
+
+  getQuery
+   .on('error', function(err){
+   })
+
+   .on('result',function(rows){
+   dbData.push(rows);
+   })
+
+   .on('end',function(){
+    res.render('human_edit',{
+     user: dbData,
+     dName: req.session.passport.user.displayName,
+     sub: req.session.passport.user.id
+    });
+  });
+ }else{
+  res.render('index',{
+   dName: null
+  });
+ }
+});
+
+//LocationApp MakeOndemandRule
+router.get('/ondemand_edit',function(req, res){
+ if (req.session.passport.user) {
+  console.log("RuleEDIT:",req.session.passport);
+  var dbData = [];
+  var selectSql = "select * from member_list;";
+  var getQuery = config.connection.query(selectSql);
+
+  getQuery
+   .on('error', function(err){
+   })
+
+   .on('result',function(rows){
+   dbData.push(rows);
+   })
+
+   .on('end',function(){
+    res.render('ondemand_edit',{
      user: dbData,
      dName: req.session.passport.user.displayName,
      sub: req.session.passport.user.id

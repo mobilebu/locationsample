@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+  <head>
+    <meta charset="utf-8">
+    <title>Location Sample Member List</title>
+    <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Le styles -->
+    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+      body { padding-top: 60px; /* 60px to make the container go all the way
+      to the bottom of the topbar */ }
+    </style>
+    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js">
+      </script>
+    <![endif]-->
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?libraries=adsense&sensor=false&language=ja"></script>
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js"></script>
+   <link href="/stylesheets/bootstrap.css" rel="stylesheet">
+   <link href="/stylesheets/bootstrap-switch.css" rel="stylesheet">
+   <script src="/javascripts/jquery.min.js"></script>
+   <script src="/javascripts/bootstrap-switch.js"></script>
+
+  </head>
+<body>
+<% include nav %>
+<div class="container">
+   <h1>Rule List</h1>
+    <p><%= dName %> としてログインしています</a></p>
+  <h2>1.インフォメーションタイトル&説明</h2>
+　 <form role="form">
+    <div class="form-group">
+     <label for="push_rule_title">Title:</label>
+     <input type="title" class="form-control" id="push_rule_title" placeholder="title">
+    </div>
+    <div class="form-group">
+     <label for="push_rule_discription">Discription:</label>
+     <input type="discription" class="form-control" id="push_rule_discription" placeholder="discription">
+    </div>
+   </form>
+
+  <h2>2.位置情報の指定</h2>
+  <h4>
+    <p>座標値を取得したい場所が中心にくるように地図を操作してください。</p>
+    <p>下に座標値が表示されます。</p>
+  </h4>
+    <form>
+	<table id="params">
+	  <tr>
+	    <td align="right" nowrap id="params"><label for="push_rule_discription">住所および施設の付近を表示 : </label></td>
+	    <td align="left" id="params">
+	      <input id="address" class="form-control" type="text" value="" placeholder="検索したい地名を入力" size="50" style="width=50px;">
+   	    </td>
+	    <td>
+	      <input name="search" id="button" type="button" class="btn btn-default" value="Search">
+	    </td>
+	  </tr>
+	</table>
+    </form>
+
+  <div id='map-canvas' style='width:640px; height:480px;'></div>
+  <h2>3.距離を指定する</h2>
+    <label for="push_rule_distance">Search Area(a metre):</label>
+    <input id="push_rule_local_destance" class="form-control" type="local_distance" value="" size="10" style="width=50px;" placeholder="検索範囲（メートル）を入力">
+     <input type="checkbox" name="distance_in_or_out" checked data-size="large" data-on-text="入ったら" data-off-text="出たら">
+  <h2>4.参加可能なユーザを選ぶ</h2>
+   <form role="form">
+   <table class="table table-bordered">
+   <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Check</th>
+   </tr>
+   <% for(var i=0; i<user.length; i++) { %>
+   <tr>
+        <td><%= i + 1 %></td>
+        <td><%= user[i].name %></td>
+        <td>
+         <div class="checkbox">
+          <label>
+            <input type="checkbox"> Check me out
+          </label>
+         </div>
+        </td>
+  </tr>
+  <% } %>
+  </table>
+  </form>
+
+  <a href="" class="btn btn-default "><span class="glyphicon glyphicon-book"></span>Edit</a>
+
+  <script>$("[name='distance_in_or_out']").bootstrapSwitch()</script>
+  <script>$("[name='schedule_in_or_out']").bootstrapSwitch();</script>
+
+</div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="/javascripts/editlocation.js"></script>
+  </body>
+
+</html>
+
